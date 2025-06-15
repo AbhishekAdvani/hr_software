@@ -1,0 +1,902 @@
+[
+  {
+    "clientId": "CL001",
+    "name": "Jimenez, Cruz and Tyler",
+    "email": "hernandezmichael@gates.com",
+    "phone": "001-404-594-6693",
+    "address": "733 Stephen Forks Suite 451, North Maryshire, RI 41047",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL002",
+    "name": "Garcia-Phillips",
+    "email": "rickymccoy@wright.com",
+    "phone": "2845773234",
+    "address": "142 Cobb Camp Suite 585, Matthewfurt, AR 25999",
+    "industry": "Education",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL003",
+    "name": "Davis, Scott and Wood",
+    "email": "wryan@wise-robbins.com",
+    "phone": "+1-199-613-2645",
+    "address": "043 William Terrace, New Mauricestad, IN 75687",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL004",
+    "name": "Savage, Jordan and Johnson",
+    "email": "nicholas42@parsons.com",
+    "phone": "(775)800-0397",
+    "address": "284 Haney Village, Floresburgh, WY 43405",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL005",
+    "name": "Lewis Group",
+    "email": "bethsingleton@white.com",
+    "phone": "001-520-795-2251x342",
+    "address": "56474 Micheal Skyway, East Cody, IA 22044",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL006",
+    "name": "Mendez-Gomez",
+    "email": "hooperbailey@newton.com",
+    "phone": "3606408407",
+    "address": "275 Waters Knolls Apt. 537, Lake Jesseland, MA 91793",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL007",
+    "name": "Graham and Sons",
+    "email": "bryanyates@wright.org",
+    "phone": "499-598-1657x3923",
+    "address": "50349 Gabriel Neck Apt. 443, Khanview, GA 17647",
+    "industry": "Retail",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL008",
+    "name": "Mccoy Inc",
+    "email": "jeanwilson@gibbs.com",
+    "phone": "5852284099",
+    "address": "60753 Petersen Union Suite 249, Russellbury, KS 57670",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL009",
+    "name": "Crosby-Morris",
+    "email": "greenmelissa@white-schneider.biz",
+    "phone": "001-129-535-1477x37351",
+    "address": "067 Robert Lodge, New Arielside, FL 43031",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL010",
+    "name": "Crosby-Hutchinson",
+    "email": "stevenyu@stewart.com",
+    "phone": "206.545.4163",
+    "address": "5366 Sean Fields, Lopezmouth, GA 54825",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL011",
+    "name": "Snyder LLC",
+    "email": "dunlapwilliam@washington-clark.org",
+    "phone": "001-798-861-2181x8303",
+    "address": "159 Jennifer Valley Suite 493, Barrettville, NJ 86299",
+    "industry": "Retail",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL012",
+    "name": "Henry-Gonzales",
+    "email": "cooperkevin@maldonado-foster.com",
+    "phone": "+1-770-629-7975x09484",
+    "address": "0388 Bryan Isle, Darrenmouth, MN 46825",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL013",
+    "name": "Bowen and Sons",
+    "email": "lanekristy@gilbert.com",
+    "phone": "465-461-1769x36551",
+    "address": "322 David Street, Port Tarachester, NV 21642",
+    "industry": "Finance",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL014",
+    "name": "Wiggins-Thomas",
+    "email": "jenniferharris@howell-richardson.com",
+    "phone": "001-132-951-2991",
+    "address": "5724 David Island, Salazartown, WI 87590",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL015",
+    "name": "Thomas-Johnson",
+    "email": "kboone@ball.com",
+    "phone": "768-947-5748",
+    "address": "493 James Greens, South Kristinville, OR 42927",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL016",
+    "name": "Collins-Robertson",
+    "email": "alexanderjason@andrade.net",
+    "phone": "166-967-3587",
+    "address": "PSC 1713, Box 3265, APO AE 77510",
+    "industry": "Finance",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL017",
+    "name": "Graham-Watson",
+    "email": "ascott@robertson.net",
+    "phone": "668.910.0230x3487",
+    "address": "8675 Nicole Ville Apt. 735, Shafferside, MO 21093",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL018",
+    "name": "Soto Ltd",
+    "email": "michaelsolis@henderson.info",
+    "phone": "001-078-050-0632x72319",
+    "address": "5599 Davis Rapids, Robertsshire, MO 33451",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL019",
+    "name": "Wright-Stewart",
+    "email": "uwilkinson@west-thompson.biz",
+    "phone": "753-373-7488x82364",
+    "address": "0331 Jose Passage Apt. 694, Christophermouth, AZ 47190",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL020",
+    "name": "Reyes-Phillips",
+    "email": "meyercrystal@burke-hudson.net",
+    "phone": "2515439661",
+    "address": "USCGC Huynh, FPO AE 41923",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL021",
+    "name": "Frazier and Sons",
+    "email": "rkirby@rosales.net",
+    "phone": "791.428.8148x4383",
+    "address": "1407 Tina Mills Suite 269, Aguilarton, MN 96315",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL022",
+    "name": "Macias, Sanchez and Martinez",
+    "email": "lisa62@williams.net",
+    "phone": "670-840-0214x76580",
+    "address": "5718 Shelly Forks, Port Vickiville, ND 39135",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL023",
+    "name": "Nelson and Sons",
+    "email": "bradyanthony@nelson.com",
+    "phone": "001-030-935-3869",
+    "address": "16827 Anderson Island Suite 880, Sandramouth, MT 62348",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL024",
+    "name": "King, Rodriguez and Hoffman",
+    "email": "akirby@stevens.com",
+    "phone": "986.505.3828",
+    "address": "074 Bryce Cove Suite 379, South Aimee, TX 44073",
+    "industry": "Retail",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL025",
+    "name": "Wolf-Owen",
+    "email": "crawfordalbert@williams.net",
+    "phone": "396-663-8062x8965",
+    "address": "0505 Jorge Rapids Suite 360, Tonyaland, MS 72730",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL026",
+    "name": "Mcintyre and Sons",
+    "email": "katherine56@medina-castaneda.biz",
+    "phone": "852.921.1956x9501",
+    "address": "199 Flores Shoal, New Kyle, AZ 07785",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL027",
+    "name": "Perry Inc",
+    "email": "deborahhoffman@smith-cole.com",
+    "phone": "7544231045",
+    "address": "1648 Oliver Islands, Michaelview, NC 10946",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL028",
+    "name": "Thompson, Stuart and Guerrero",
+    "email": "evanssteven@miller-holmes.com",
+    "phone": "994-301-9357x4829",
+    "address": "USNS Wilson, FPO AA 22852",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL029",
+    "name": "Stevens, Hill and Harrison",
+    "email": "kirk00@wagner.com",
+    "phone": "001-067-826-8871x57960",
+    "address": "65453 Gordon Light, Bowmanberg, NJ 82576",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL030",
+    "name": "Mccarthy, Mendoza and Bailey",
+    "email": "frankstephenson@manning.biz",
+    "phone": "078.893.8932x769",
+    "address": "7080 John Forks, Port Tammy, NM 03384",
+    "industry": "Retail",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL031",
+    "name": "Ramirez and Sons",
+    "email": "sarahdonaldson@stein.com",
+    "phone": "+1-793-191-2705",
+    "address": "9128 Timothy Drive Apt. 426, Torreschester, SC 16134",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL032",
+    "name": "Bishop-Chaney",
+    "email": "hjones@cunningham.net",
+    "phone": "001-753-032-9822x834",
+    "address": "546 Knight Fall Suite 505, New Kevin, MO 48236",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL033",
+    "name": "Perez, Chambers and Andersen",
+    "email": "canthony@morales.org",
+    "phone": "+1-345-108-2138x56282",
+    "address": "043 Fields Tunnel, East Susan, DE 42173",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL034",
+    "name": "Newman-Perez",
+    "email": "beth44@holmes.com",
+    "phone": "(070)920-1306",
+    "address": "4509 David Village, Josephburgh, RI 75771",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL035",
+    "name": "Nelson Ltd",
+    "email": "smithkevin@estes.com",
+    "phone": "+1-560-936-2883",
+    "address": "41951 Richard Inlet Apt. 410, Wolfmouth, OK 78413",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL036",
+    "name": "Murillo Inc",
+    "email": "sbarnett@martin-reed.com",
+    "phone": "001-486-954-8449x312",
+    "address": "07969 Brandon Knolls, Lake Ralph, IN 77591",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL037",
+    "name": "Coleman Group",
+    "email": "rmullen@bell.biz",
+    "phone": "101-002-1385x508",
+    "address": "66138 Katrina Harbor Suite 211, Vegaview, NC 19542",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL038",
+    "name": "Brooks and Sons",
+    "email": "ithomas@anderson.com",
+    "phone": "(729)728-8788x209",
+    "address": "8917 Andrew Dam, Thomasborough, PA 39203",
+    "industry": "IT",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL039",
+    "name": "Williams-Good",
+    "email": "brian43@richards.com",
+    "phone": "151.188.0781x671",
+    "address": "233 Joe Plaza, Choimouth, WI 28637",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL040",
+    "name": "Douglas Group",
+    "email": "bdavis@jackson.com",
+    "phone": "(716)841-2680x02457",
+    "address": "81887 Kimberly Knolls, North David, CO 58914",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL041",
+    "name": "Walters Group",
+    "email": "swansoncraig@rodriguez-johnson.com",
+    "phone": "+1-590-695-2673",
+    "address": "2655 Mendoza Parks Suite 076, North Frederickfort, TN 52395",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL042",
+    "name": "Munoz-Oconnell",
+    "email": "nathan44@bryant.info",
+    "phone": "327-071-9959",
+    "address": "46470 Thomas Burgs Apt. 854, Fernandezhaven, TN 36189",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL043",
+    "name": "Hall LLC",
+    "email": "johnsonjared@morgan-mcfarland.net",
+    "phone": "275.297.5736x823",
+    "address": "60681 Flores Port, South Jonathanside, FL 16396",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL044",
+    "name": "Ayala and Sons",
+    "email": "kathryn67@ortiz-brown.com",
+    "phone": "302-242-8482x079",
+    "address": "365 Kristy Club, North Madison, IA 62295",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL045",
+    "name": "Stokes, Meyer and White",
+    "email": "whitemarie@avery.com",
+    "phone": "579-806-8820",
+    "address": "1566 Hodges Gateway Suite 486, Davidland, MA 73448",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL046",
+    "name": "Guerrero-Washington",
+    "email": "sheilabishop@barrera.com",
+    "phone": "757.067.7836x58328",
+    "address": "9544 Hicks Estates Suite 961, New Patrick, AR 63317",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL047",
+    "name": "Christensen Inc",
+    "email": "howardcarmen@simpson.com",
+    "phone": "(020)775-9698x4587",
+    "address": "7787 Thomas Stravenue, Smithburgh, SC 82216",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL048",
+    "name": "Santos, Diaz and Gomez",
+    "email": "mowens@lawrence-yang.info",
+    "phone": "461.525.4647",
+    "address": "PSC 8674, Box 8417, APO AA 31305",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL049",
+    "name": "Roberts, Smith and Martinez",
+    "email": "tgarcia@kelley.com",
+    "phone": "143.250.1620",
+    "address": "6905 Lopez Greens Apt. 496, East Justin, VA 35071",
+    "industry": "Education",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL050",
+    "name": "Randolph-Obrien",
+    "email": "rebecca53@harris-evans.com",
+    "phone": "001-406-584-9123",
+    "address": "636 Hayes Circles Suite 966, Elizabethmouth, LA 50183",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL051",
+    "name": "Rose, Gonzalez and Bowers",
+    "email": "ymcknight@andrews-joseph.org",
+    "phone": "(283)874-2203x1525",
+    "address": "340 Steven Village, Lake Alexisfurt, RI 16409",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL052",
+    "name": "Nelson LLC",
+    "email": "johnhall@crawford.com",
+    "phone": "239.514.4576",
+    "address": "8119 Peggy Harbor, South Emilyborough, ID 74032",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL053",
+    "name": "Wagner Group",
+    "email": "ovelez@jarvis-cummings.com",
+    "phone": "9272529899",
+    "address": "2384 James Forest Apt. 401, Ortizberg, RI 19732",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL054",
+    "name": "Marshall-Garcia",
+    "email": "hendersonchase@rich.net",
+    "phone": "606-367-4934x850",
+    "address": "560 Erik Prairie, Rodriguezborough, MA 93955",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL055",
+    "name": "Stevens, Henson and Diaz",
+    "email": "tina95@gutierrez.com",
+    "phone": "001-968-648-1417x374",
+    "address": "PSC 1617, Box 1385, APO AE 65473",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL056",
+    "name": "Short Group",
+    "email": "ashleybishop@silva-kemp.net",
+    "phone": "(561)654-6860x336",
+    "address": "22943 Steven Stravenue, North Henry, OH 17584",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL057",
+    "name": "Gibson-Thompson",
+    "email": "wwagner@moody.info",
+    "phone": "+1-701-325-6666x1263",
+    "address": "03551 Adrian Lodge Suite 528, Wilsonport, WY 60158",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL058",
+    "name": "Davis Ltd",
+    "email": "melissa96@bass.com",
+    "phone": "497-756-1780",
+    "address": "88421 Bennett Bridge Suite 941, Brianburgh, RI 07396",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL059",
+    "name": "Johnson, Moore and Hanson",
+    "email": "gravesamy@davis.com",
+    "phone": "2732003957",
+    "address": "1400 Tim Mount Suite 336, West Gina, CT 70688",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL060",
+    "name": "Martinez PLC",
+    "email": "james91@miller.info",
+    "phone": "(483)875-3135",
+    "address": "55879 Teresa Parks, Martinezbury, IL 66441",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL061",
+    "name": "Cardenas and Sons",
+    "email": "jameslopez@bradley-lloyd.info",
+    "phone": "122-574-4565x5017",
+    "address": "915 Marissa Divide, Port Melissaside, NY 79115",
+    "industry": "Finance",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL062",
+    "name": "Sanchez Group",
+    "email": "rcherry@peterson-wells.com",
+    "phone": "(305)151-0843",
+    "address": "37776 Christopher Meadow, South Jacobside, MD 46350",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL063",
+    "name": "Pacheco, Nelson and Turner",
+    "email": "vasquezeduardo@fisher-camacho.com",
+    "phone": "076.781.0600",
+    "address": "3919 White Bypass Apt. 790, Port Thomasfort, KS 31477",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL064",
+    "name": "Moore-Floyd",
+    "email": "carterelizabeth@anderson.com",
+    "phone": "398-332-2052x738",
+    "address": "USS Booth, FPO AP 22802",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL065",
+    "name": "Vaughan, Young and Morales",
+    "email": "brandy51@morales.com",
+    "phone": "243-903-8130x8165",
+    "address": "37618 Parker Light, East Nathaniel, WY 75014",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL066",
+    "name": "Hernandez, Gamble and Wright",
+    "email": "william55@little-farmer.com",
+    "phone": "(193)880-4387",
+    "address": "120 Cole Summit, Kevinfurt, AZ 90306",
+    "industry": "Education",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL067",
+    "name": "Johnson-Grant",
+    "email": "mckinneytimothy@walls-white.org",
+    "phone": "(997)587-1249",
+    "address": "USCGC Webb, FPO AA 32826",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL068",
+    "name": "Torres, Johnson and Marks",
+    "email": "larakevin@jacobs.com",
+    "phone": "001-778-154-4151x37002",
+    "address": "USNV Patrick, FPO AA 16089",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL069",
+    "name": "Moore Group",
+    "email": "wduffy@valdez.com",
+    "phone": "444.804.0156x7186",
+    "address": "940 Kristina Flat, Feliciashire, VT 95969",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL070",
+    "name": "Taylor LLC",
+    "email": "shawn81@olson.com",
+    "phone": "110-189-3511x054",
+    "address": "719 Mcknight Rapid, Annettemouth, UT 33848",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL071",
+    "name": "Nguyen-Kline",
+    "email": "courtney87@ward.org",
+    "phone": "873.318.8467",
+    "address": "60752 Hill Mews, Josephberg, WA 14189",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL072",
+    "name": "Green PLC",
+    "email": "wsampson@washington.com",
+    "phone": "524.009.9080x925",
+    "address": "450 Jillian Corner, Lake Robert, GA 46721",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL073",
+    "name": "Fields Group",
+    "email": "bianca90@johnson.com",
+    "phone": "+1-581-254-0632",
+    "address": "0174 Green Radial Apt. 111, East Kristinborough, MS 90640",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL074",
+    "name": "Madden, Williams and Miller",
+    "email": "joseph31@jones.com",
+    "phone": "433.244.3485",
+    "address": "5126 Lane Spring, Gregoryland, DC 32310",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL075",
+    "name": "Shaw LLC",
+    "email": "josebutler@briggs-morales.net",
+    "phone": "039.906.2493x8505",
+    "address": "91374 Bond Ferry, East Shelleymouth, MS 54940",
+    "industry": "Education",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL076",
+    "name": "Morrison, Shah and Strickland",
+    "email": "irwinsara@white.com",
+    "phone": "349.835.8115",
+    "address": "855 Wallace Hills, Crystalberg, DE 83044",
+    "industry": "IT",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL077",
+    "name": "Roberts, Gallagher and Oneal",
+    "email": "hernandezthomas@yates.org",
+    "phone": "001-687-498-4878",
+    "address": "74052 Hernandez Lock, West Jennifer, NJ 40173",
+    "industry": "Manufacturing",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL078",
+    "name": "Carter-Olson",
+    "email": "nancy28@hopkins.com",
+    "phone": "366-752-9204x67679",
+    "address": "605 Christine Throughway Suite 281, West Caitlin, VA 24053",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL079",
+    "name": "Brewer Inc",
+    "email": "omurray@wilson.com",
+    "phone": "001-870-555-9796x42987",
+    "address": "87321 Donna Brooks Apt. 601, Greermouth, HI 09591",
+    "industry": "Finance",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL080",
+    "name": "Bryan, Perez and Clark",
+    "email": "btaylor@hawkins.com",
+    "phone": "732-652-8614",
+    "address": "173 Duncan Neck, West Johnside, FL 76229",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL081",
+    "name": "Mcconnell, Smith and Garcia",
+    "email": "sandraguerrero@mitchell.com",
+    "phone": "305.672.0704x035",
+    "address": "8899 Owens Land, New Stephen, MO 12048",
+    "industry": "Finance",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL082",
+    "name": "Cook, Diaz and Moore",
+    "email": "erik85@duarte-moreno.biz",
+    "phone": "(363)704-5482x5588",
+    "address": "10851 Andrews Rue Suite 967, Peterschester, VA 83076",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL083",
+    "name": "Calhoun-Burns",
+    "email": "juan32@smith.com",
+    "phone": "001-879-633-3492",
+    "address": "615 Stewart Mount, Port Christinebury, NH 11148",
+    "industry": "IT",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL084",
+    "name": "Smith, Mcknight and Jackson",
+    "email": "ufuentes@mays.com",
+    "phone": "(797)731-3686x5654",
+    "address": "84754 Daniel Coves, New Brenda, OK 21204",
+    "industry": "IT",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL085",
+    "name": "Robinson, Barnett and Romero",
+    "email": "kbaker@schmidt-morris.info",
+    "phone": "+1-938-363-3139x34104",
+    "address": "344 Frank Lakes, New Nicolas, ME 63414",
+    "industry": "Manufacturing",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL086",
+    "name": "Nash-Garcia",
+    "email": "colin16@jones.com",
+    "phone": "001-569-856-0351x939",
+    "address": "09782 James Hills Apt. 863, Thomasland, NH 31133",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL087",
+    "name": "Sandoval Inc",
+    "email": "lwilson@johnson.com",
+    "phone": "455-129-4046",
+    "address": "08106 Victor Loop Suite 645, South Theresa, MA 07378",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL088",
+    "name": "White, Singleton and Perkins",
+    "email": "ariasmike@williams.com",
+    "phone": "+1-082-993-0806x8318",
+    "address": "1450 Hinton Light, Joneshaven, AK 73333",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL089",
+    "name": "Lewis, Scott and Johnson",
+    "email": "sosaelizabeth@watson.net",
+    "phone": "+1-866-969-9162",
+    "address": "Unit 3751 Box 8564, DPO AA 29185",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL090",
+    "name": "Hill-Charles",
+    "email": "elizabeth23@payne-chapman.biz",
+    "phone": "702.213.7289x4370",
+    "address": "62061 Ford Trace, West Angelamouth, OK 36540",
+    "industry": "Healthcare",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL091",
+    "name": "Mays, Hall and Howard",
+    "email": "justin77@payne.biz",
+    "phone": "+1-154-514-2144x3602",
+    "address": "57855 Martinez Lights, Deniseport, MD 12587",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL092",
+    "name": "Larson-Yu",
+    "email": "carneyalyssa@guerrero-soto.com",
+    "phone": "958-941-8243x584",
+    "address": "6667 Brian Extensions Apt. 494, Karenfurt, RI 43454",
+    "industry": "Healthcare",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL093",
+    "name": "Ware-Anderson",
+    "email": "ijohnston@beard-roth.com",
+    "phone": "564-106-0014x6381",
+    "address": "063 Alan Path, Lindseymouth, MI 66688",
+    "industry": "Consulting",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL094",
+    "name": "Jefferson, Anderson and Thomas",
+    "email": "taylorblake@lee-ferrell.biz",
+    "phone": "+1-281-851-3005",
+    "address": "3834 Lewis Mountains Apt. 719, South Elizabethburgh, NJ 69031",
+    "industry": "Retail",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL095",
+    "name": "Bean Ltd",
+    "email": "heathercaldwell@wright.com",
+    "phone": "(235)064-5972",
+    "address": "21816 Wright Stravenue, East Walter, GA 94657",
+    "industry": "Retail",
+    "status": "Active"
+  },
+  {
+    "clientId": "CL096",
+    "name": "Cardenas, Garcia and Robinson",
+    "email": "cassandra23@brown.com",
+    "phone": "6770141768",
+    "address": "53759 Shelton Route Suite 236, Yufurt, MA 04613",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL097",
+    "name": "Higgins-Atkinson",
+    "email": "michaelmitchell@brown.biz",
+    "phone": "509-062-8430",
+    "address": "34942 Hill Rapid Suite 278, East Tanner, WA 74041",
+    "industry": "IT",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL098",
+    "name": "Howard Group",
+    "email": "joycefitzgerald@stanley-gilbert.com",
+    "phone": "+1-605-645-6982x671",
+    "address": "04187 Robin Summit, Gabriellaland, MI 94630",
+    "industry": "Consulting",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL099",
+    "name": "West-Baker",
+    "email": "nathan50@andrade.net",
+    "phone": "202-548-9240",
+    "address": "54045 Wagner Streets, Nataliestad, IL 42564",
+    "industry": "Finance",
+    "status": "Inactive"
+  },
+  {
+    "clientId": "CL100",
+    "name": "Huffman Ltd",
+    "email": "masonbradley@ramirez.com",
+    "phone": "144-571-9617",
+    "address": "Unit 8692 Box 2978, DPO AA 34751",
+    "industry": "Retail",
+    "status": "Active"
+  }
+]

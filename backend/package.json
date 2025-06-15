@@ -20,7 +20,9 @@
     "helmet": "^8.1.0",
     "json2csv": "^6.0.0-alpha.2",
     "mongoose": "^8.15.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^2.0.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
