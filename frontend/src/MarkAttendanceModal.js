@@ -17,6 +17,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import ReactSelect from "react-select";
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 const MarkAttendanceModal = ({
   isOpen,
@@ -66,10 +67,16 @@ const MarkAttendanceModal = ({
     }
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      async (position) => {
         const { latitude, longitude } = position.coords;
         const now = new Date();
         const clockInTime = now.toLocaleTimeString();
+
+        // Generate fingerprint
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        const deviceId = result.visitorId;
+
         const entry = {
           id: employee.id,
           name: employee.name,
@@ -81,6 +88,7 @@ const MarkAttendanceModal = ({
           client,
           project,
           geoLocation: `${latitude},${longitude}`,
+          deviceId: deviceId, // ✅ captured device fingerprint
         };
 
         setEntries([...entries, entry]);
@@ -114,7 +122,7 @@ const MarkAttendanceModal = ({
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
       <ModalOverlay />
       <ModalContent borderRadius="md" p={1}>
-        <ModalHeader fontWeight="semibold">📝 Mark Attendance</ModalHeader>
+        <ModalHeader fontWeight="semibold">Mark Attendance</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={5}>

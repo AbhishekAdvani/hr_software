@@ -1,35 +1,46 @@
 const Employee = require("../models/Employee");
 const XLSX = require("xlsx");
 
+const success = (res, code, message, data = {}) =>
+  res.status(code).json({ success: true, code, message, data });
+
+const error = (res, code, message) =>
+  res.status(code).json({ success: false, code, message, data: null });
+
 // CREATE
 exports.createEmployee = async (req, res) => {
   try {
     const employee = new Employee(req.body);
     await employee.save();
-    res.status(201).json(employee);
+    success(res, 201, "Employee created", employee);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    console.error(err);
+    error(res, 400, err.message);
   }
 };
 
 // READ ALL
 exports.getAllEmployees = async (req, res) => {
   try {
-    const employees = await Employee.find();
-    res.json(employees);
+    const employees = await Employee.find().sort({ employeeId: 1 });
+    success(res, 200, "All employees fetched", employees);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    error(res, 500, err.message);
   }
 };
 
 // READ ONE
 exports.getEmployeeById = async (req, res) => {
   try {
-    const employee = await Employee.findById(req.params.id);
-    if (!employee) return res.status(404).json({ error: "Not found" });
-    res.json(employee);
+    console.log("Fetching employee with employeeId:", req.params.id);
+    const employeeId = req.params.id;
+    const employee = await Employee.findOne({
+      employeeId: employeeId.toString(),
+    });
+    if (!employee) return error(res, 404, "Employee not found");
+    success(res, 200, "Employee fetched", employee);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    error(res, 500, err.message);
   }
 };
 
@@ -39,26 +50,28 @@ exports.updateEmployee = async (req, res) => {
     const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    res.json(employee);
+    if (!employee) return error(res, 404, "Employee not found");
+    success(res, 200, "Employee updated", employee);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    error(res, 400, err.message);
   }
 };
 
-// DELETE
+// DELETE ONE
 exports.deleteEmployee = async (req, res) => {
   try {
-    await Employee.findByIdAndDelete(req.params.id);
-    res.json({ message: "Employee deleted" });
+    const result = await Employee.findByIdAndDelete(req.params.id);
+    if (!result) return error(res, 404, "Employee not found");
+    success(res, 200, "Employee deleted");
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    error(res, 500, err.message);
   }
 };
 
-// 1️⃣ Bulk upload via Excel
+// BULK UPLOAD via Excel
 exports.uploadEmployeesFromExcel = async (req, res) => {
   try {
-    if (!req.file) return res.status(400).send("No file uploaded.");
+    if (!req.file) return error(res, 400, "No file uploaded");
 
     const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
     const sheetName = workbook.SheetNames[0];
@@ -77,22 +90,22 @@ exports.uploadEmployeesFromExcel = async (req, res) => {
     }));
 
     await Employee.insertMany(employees);
-    res
-      .status(201)
-      .json({ message: `${employees.length} employees uploaded.` });
+    success(res, 201, `${employees.length} employees uploaded`, {
+      count: employees.length,
+    });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Error uploading employees");
+    error(res, 500, "Error uploading employees: " + err.message);
   }
 };
 
-// 2️⃣ Delete all employees
+// DELETE ALL
 exports.deleteAllEmployees = async (req, res) => {
   try {
-    await Employee.deleteMany();
-    res.status(200).json({ message: "All employees deleted." });
+    const result = await Employee.deleteMany();
+    success(res, 200, "All employees deleted", {
+      deletedCount: result.deletedCount,
+    });
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Error deleting employees");
+    error(res, 500, "Error deleting employees: " + err.message);
   }
 };

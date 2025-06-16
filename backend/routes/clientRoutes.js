@@ -1,17 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Client = require("../models/Client");
+const clientController = require("../controllers/clientController");
 
-router.get("/", async (req, res) => {
-  const clients = await Client.find();
-  res.json(clients);
-});
-
-router.post("/", async (req, res) => {
-  const { id, name } = req.body;
-  const client = new Client({ id, name });
-  await client.save();
-  res.status(201).send(client);
-});
+router.get("/getAllClients", clientController.getAllClients);
+router.post("/createClient", clientController.createClient);
+router.get("/getClientById/:id", clientController.getClientById);
 
 module.exports = router;

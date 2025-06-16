@@ -8,6 +8,8 @@ router.get("/", async (req, res) => {
   res.json(entries);
 });
 
+
+
 router.post("/", async (req, res) => {
   try {
     const entry = new Attendance(req.body);

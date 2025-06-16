@@ -6,17 +6,13 @@ const multer = require("multer");
 const upload = multer({ storage: multer.memoryStorage() });
 const employeeController = require("../controllers/employeeController");
 
-router.get("/", async (req, res) => {
-  const employees = await Employee.find();
-  res.json(employees);
-});
+router.get("/getAllEmployees", employeeController.getAllEmployees);
 
-router.post("/", async (req, res) => {
-  const { id, name } = req.body;
-  const emp = new Employee({ id, name });
-  await emp.save();
-  res.status(201).send(emp);
-});
+router.post("/createEmployee", employeeController.createEmployee);
+
+router.get("/getEmployeeById/:id", employeeController.getEmployeeById);
+router.put("/updateEmployee/:id", employeeController.updateEmployee);
+router.delete("/deleteEmployee/:id", employeeController.deleteEmployee);
 
 router.post(
   "/upload-excel",

@@ -24,7 +24,8 @@ exports.getAllClients = async (req, res) => {
 // READ ONE
 exports.getClientById = async (req, res) => {
   try {
-    const client = await Client.findById(req.params.id);
+    const clientId = req.params.id;
+    const client = await Client.findOne({ clientId: clientId.toString() });
     if (!client) return res.status(404).json({ error: "Not found" });
     res.json(client);
   } catch (err) {
