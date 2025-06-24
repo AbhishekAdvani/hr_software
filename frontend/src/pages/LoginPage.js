@@ -39,17 +39,18 @@ const LoginPage = ({ onSwitch }) => {
   };
 
   return (
-    <Flex height="100vh" align="center" justify="center" bg="gray.50">
+    <Flex height="100vh" align="center" justify="center" bg="gray.100">
       <Flex
-        w={{ base: "100%", md: "80%", lg: "100%" }}
-        maxW="full"
-        height="full"
-        boxShadow="lg"
-        rounded="lg"
+        w={{ base: "100%", md: "90%", lg: "80%" }}
+        maxW="6xl"
+        height="auto"
+        boxShadow="2xl"
+        rounded="2xl"
         overflow="hidden"
         bg="white"
+        flexDir={{ base: "column", md: "row" }}
       >
-        {/* Left Side */}
+        {/* Left Bubble */}
         <Flex
           bgColor="#0B4885"
           color="white"
@@ -58,13 +59,12 @@ const LoginPage = ({ onSwitch }) => {
           direction="column"
           justify="center"
           align="center"
+          borderTopRightRadius={{ base: "2xl", md: "0" }}
+          borderBottomRightRadius={{ base: "2xl", md: "0" }}
+          borderTopLeftRadius={{ base: "2xl", md: "2xl" }}
+          borderBottomLeftRadius={{ base: "2xl", md: "2xl" }}
         >
-          <Image
-            src="/image.png" // Replace with your logo path
-            boxSize="80px"
-            mb={4}
-            alt="TechinvoPeople"
-          />
+          <Image src="/image.png" boxSize="80px" mb={4} alt="TechinvoPeople" />
           <Heading fontSize="2xl" mb={2}>
             Welcome to TechinvoPeople
           </Heading>
@@ -73,10 +73,15 @@ const LoginPage = ({ onSwitch }) => {
           </Text>
         </Flex>
 
-        {/* Right Side Form */}
-        <Box flex="1" p={{ base: 6, md: 10 }}>
-          <Stack spacing={5}>
-            <Stack spacing={1} align="center">
+        {/* Right Bubble */}
+        <Box
+          flex="1"
+          bg="white"
+          p={{ base: 8, md: 12 }}
+          rounded={{ base: "2xl", md: "2xl" }}
+        >
+          <Stack spacing={6}>
+            <Stack spacing={2} align="center">
               <Icon as={FaUserLock} boxSize={7} color="teal.500" />
               <Heading size="md" color="teal.600">
                 Login to your account

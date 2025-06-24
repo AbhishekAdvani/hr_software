@@ -9,10 +9,21 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
-import { BsCalendarCheck, BsGear } from "react-icons/bs";
+import {
+  BsCalendarCheck,
+  BsClockHistory,
+  BsCreditCard,
+  BsCurrencyDollar,
+  BsGear,
+  BsHeart,
+  BsShieldCheck,
+} from "react-icons/bs";
 
 const navItems = [
-  { label: "Attendance", to: "/", icon: BsCalendarCheck },
+  { label: "Clock Punch", to: "/clockin", icon: BsCalendarCheck },
+  { label: "Schedule", to: "/schedule", icon: BsClockHistory },
+  { label: "Pay", to: "/pay", icon: BsCreditCard },
+  { label: "Benefits", to: "/benefits", icon: BsShieldCheck },
   { label: "Settings", to: "/settings", icon: BsGear },
 ];
 

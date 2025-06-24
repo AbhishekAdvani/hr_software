@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -10,23 +10,34 @@ import {
   Link,
   useColorModeValue,
   Image,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Avatar,
+  Spacer,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, BellIcon } from "@chakra-ui/icons";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
+const MotionLink = motion(Link);
 
 const Links = [
-  { label: "Dashboard", href: "/", disabled: true },
+  { label: "Dashboard", href: "/Dashboard", disabled: false },
   { label: "Attendance", href: "/attendance", disabled: true },
   { label: "Reports", href: "/reports", disabled: true },
   { label: "Settings", href: "/settings", disabled: false },
 ];
 
-const NavLink = ({ label, href, disabled }) => {
-  const location = useLocation();
+const NavLink = ({ label, href, disabled, onNavigate }) => {
   const isActive = location.pathname === href;
 
   return (
-    <Link
+    <MotionLink
+      whileHover={!disabled ? { scale: 1.05 } : {}}
+      transition={{ duration: 0.2 }}
       px={4}
       py={2}
       rounded="full"
@@ -46,7 +57,6 @@ const NavLink = ({ label, href, disabled }) => {
           : {
               textDecoration: "none",
               bg: "teal.200",
-              transform: "scale(1.05)",
               transition: "all 0.2s ease-in-out",
             }
       }
@@ -56,61 +66,102 @@ const NavLink = ({ label, href, disabled }) => {
       tabIndex={disabled ? -1 : 0}
       opacity={disabled ? 0.6 : 1}
       cursor={disabled ? "not-allowed" : "pointer"}
+      onClick={onNavigate}
     >
       {label}
-    </Link>
+    </MotionLink>
   );
 };
 
 const StickyNavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onClose(); // Auto-close mobile nav
+  }, [location.pathname]);
+
+  const handleLogout = () => {
+    // Add auth cleanup here if needed
+    navigate("/login");
+  };
 
   return (
     <Box
       position="sticky"
       top="0"
       zIndex="999"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("whiteAlpha.800", "gray.800")}
       px={4}
+      backdropFilter="saturate(180%) blur(12px)"
       boxShadow="sm"
+      borderBottom="1px solid"
+      borderColor={useColorModeValue("gray.100", "gray.700")}
     >
       <Flex h={16} alignItems="center" justifyContent="space-between">
-        <Flex align="center" gap={2}>
-          <Image
-            src="/image.png" // replace with your actual logo path or URL
-            alt="Expound HR Logo"
-            boxSize="32px"
-            objectFit="contain"
-          />
-          <Text fontWeight="bold" fontSize="lg" color="teal.600">
-            TechinvoPeople{" "}
+        {/* Logo */}
+        <Flex align="center" gap={3}>
+          <Image src="/image.png" alt="TechinvoPeople" boxSize="36px" />
+          <Text
+            fontWeight="bold"
+            fontSize="lg"
+            bgGradient="linear(to-r, teal.400, blue.500)"
+            bgClip="text"
+          >
+            TechinvoPeople
           </Text>
         </Flex>
 
-        <IconButton
-          size="md"
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label="Toggle Navigation"
-          display={{ md: "none" }}
-          onClick={isOpen ? onClose : onOpen}
-        />
-
+        {/* Desktop Nav */}
         <HStack spacing={2} display={{ base: "none", md: "flex" }}>
           {Links.map((link) => (
             <NavLink key={link.label} {...link} />
           ))}
         </HStack>
+
+        <Flex align="center" gap={4}>
+          {/* Notification Bell */}
+          <IconButton
+            icon={<BellIcon />}
+            variant="ghost"
+            aria-label="Notifications"
+            size="md"
+          />
+
+          {/* Profile Menu */}
+          <Menu>
+            <MenuButton>
+              <Avatar size="sm" name="Abhishek Advani" src="/profile.png" />
+            </MenuButton>
+            <MenuList>
+              <MenuItem>My Profile</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+
+          {/* Hamburger */}
+          <IconButton
+            size="md"
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label="Toggle Navigation"
+            display={{ md: "none" }}
+            onClick={isOpen ? onClose : onOpen}
+            variant="ghost"
+          />
+        </Flex>
       </Flex>
 
-      {isOpen ? (
+      {/* Mobile Nav */}
+      {isOpen && (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={2}>
             {Links.map((link) => (
-              <NavLink key={link.label} {...link} />
+              <NavLink key={link.label} {...link} onNavigate={onClose} />
             ))}
           </Stack>
         </Box>
-      ) : null}
+      )}
     </Box>
   );
 };
