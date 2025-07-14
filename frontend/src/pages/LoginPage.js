@@ -15,15 +15,19 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { FaUserLock } from "react-icons/fa";
+import { useUser } from "../context/UserContext"; // <-- 👈 Import context
+import { useNavigate } from "react-router-dom"; // <-- 👈 To redirect after login
 
 const LoginPage = ({ onSwitch }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const toast = useToast();
+  const { login } = useUser(); // 👈 Hook into login
+  const navigate = useNavigate(); // 👈 React Router navigation
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!form.email || !form.password) {
       return toast({
         title: "Missing Fields",
@@ -34,8 +38,26 @@ const LoginPage = ({ onSwitch }) => {
       });
     }
 
-    // Replace with your login logic (API call)
-    console.log("Logging in:", form);
+    const result = await login(form.email, form.password); // 👈 Call login
+
+    if (result.success) {
+      toast({
+        title: "Login Successful",
+        description: "Welcome back!",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+      navigate("/"); // redirect to dashboard or homepage
+    } else {
+      toast({
+        title: "Login Failed",
+        description: result.message,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -59,10 +81,6 @@ const LoginPage = ({ onSwitch }) => {
           direction="column"
           justify="center"
           align="center"
-          borderTopRightRadius={{ base: "2xl", md: "0" }}
-          borderBottomRightRadius={{ base: "2xl", md: "0" }}
-          borderTopLeftRadius={{ base: "2xl", md: "2xl" }}
-          borderBottomLeftRadius={{ base: "2xl", md: "2xl" }}
         >
           <Image src="/image.png" boxSize="80px" mb={4} alt="TechinvoPeople" />
           <Heading fontSize="2xl" mb={2}>
@@ -74,12 +92,7 @@ const LoginPage = ({ onSwitch }) => {
         </Flex>
 
         {/* Right Bubble */}
-        <Box
-          flex="1"
-          bg="white"
-          p={{ base: 8, md: 12 }}
-          rounded={{ base: "2xl", md: "2xl" }}
-        >
+        <Box flex="1" bg="white" p={{ base: 8, md: 12 }}>
           <Stack spacing={6}>
             <Stack spacing={2} align="center">
               <Icon as={FaUserLock} boxSize={7} color="teal.500" />

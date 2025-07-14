@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-
-import FingerprintJS from "@fingerprintjs/fingerprintjs";
-
-import ClockInClockOut from "./pages/ClockInClockOut";
-import UserDashboard from "./pages/Dashboard";
-
-const fpPromise = FingerprintJS.load();
+import React from "react";
+import { UserProvider } from "./context/UserContext";
+import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
   return (
-    <>
-      <UserDashboard />
-    </>
+    <UserProvider>
+      <AppRoutes />
+    </UserProvider>
   );
 };
 

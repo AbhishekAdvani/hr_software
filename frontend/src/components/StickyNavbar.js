@@ -87,6 +87,11 @@ const StickyNavbar = () => {
     navigate("/login");
   };
 
+  const handleMyProfile = () => {
+    // Add auth cleanup here if needed
+    navigate("/MyProfile");
+  };
+
   return (
     <Box
       position="sticky"
@@ -135,7 +140,7 @@ const StickyNavbar = () => {
               <Avatar size="sm" name="Abhishek Advani" src="/profile.png" />
             </MenuButton>
             <MenuList>
-              <MenuItem>My Profile</MenuItem>
+              <MenuItem onClick={handleMyProfile}>My Profile</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </MenuList>
           </Menu>

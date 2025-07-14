@@ -31,6 +31,7 @@ import {
   FaFileAlt,
   FaEnvelopeOpenText,
 } from "react-icons/fa";
+import { useUser } from "../context/UserContext";
 
 const KPIBox = ({ icon, label, value, helpText, color }) => {
   const cardBg = useColorModeValue("whiteAlpha.900", "whiteAlpha.100");
@@ -85,6 +86,8 @@ const ShortcutButton = ({ label, icon, colorScheme }) => (
 );
 
 const UserDashboard = () => {
+  const { loggedInUser } = useUser();
+  console.log("loggedInUser", loggedInUser);
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Good Morning";
@@ -103,11 +106,9 @@ const UserDashboard = () => {
         gap={6}
       >
         <Box textAlign={{ base: "center", md: "left" }}>
-          <Text fontSize="xl" color="teal.600" fontWeight="medium">
-            {getGreeting()},
-          </Text>
+          {/* <Text fontSize="xl" color="teal.600" fontWeight="medium"></Text> */}
           <Heading size="lg" color="gray.800">
-            Welcome back, Abhishek 👋
+            {getGreeting()}, {loggedInUser?.name || "User"} 👋
           </Heading>
           <Text fontSize="sm" color="gray.500" mt={1}>
             Here's your personalized HR dashboard
@@ -123,7 +124,11 @@ const UserDashboard = () => {
           >
             Present Today
           </Badge>
-          <Avatar name="Abhishek Advani" size="lg" src="/profile.png" />
+          <Avatar
+            name={loggedInUser?.name || "User"}
+            size="sm"
+            src="/profile.png"
+          />
         </Flex>
       </Flex>
 
