@@ -6,5 +6,6 @@ const clientController = require("../controllers/clientController");
 router.get("/getAllClients", clientController.getAllClients);
 router.post("/createClient", clientController.createClient);
 router.get("/getClientById/:id", clientController.getClientById);
+router.get("/deleteAllClients", clientController.deleteAllClients);
 
 module.exports = router;

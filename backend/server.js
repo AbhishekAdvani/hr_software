@@ -8,8 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const employeeData = require("./seed_employees.json");
-const clientData = require("./seed_clients.json");
 
 // DB Connection
 mongoose.connect(
@@ -30,10 +28,12 @@ const companyRoutes = require("./routes/v1/companyRoutes");
 
 // Routes
 app.use("/api/employees", require("./routes/employeeRoutes"));
-app.use("/api/clients", require("./routes/clientRoutes"));
+app.use("/clients", require("./routes/clientRoutes"));
 app.use("/api/attendance", require("./routes/attendanceRoutes"));
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/companies", companyRoutes);
+app.use("/api/tickets", require("./routes/ticket.routes.js"));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -4,7 +4,9 @@ const clientSchema = new mongoose.Schema(
   {
     clientId: { type: String, unique: true }, // You define this
     name: { type: String, required: true },
-    email: { type: String },
+    email: {
+      type: String, unique: true,  // ✅ This creates a unique index
+    },
     phone: { type: String },
     address: { type: String },
     industry: { type: String }, // e.g. IT, Finance, etc.

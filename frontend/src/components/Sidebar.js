@@ -14,12 +14,16 @@ import {
   BsClockHistory,
   BsCreditCard,
   BsCurrencyDollar,
+  BsFillTicketFill,
   BsGear,
   BsHeart,
   BsShieldCheck,
+  BsStickies,
+
 } from "react-icons/bs";
 
 const navItems = [
+  { label: "Ticketing", to: "/Ticketing", icon: BsStickies },
   { label: "Clock Punch", to: "/clockin", icon: BsCalendarCheck },
   { label: "Schedule", to: "/schedule", icon: BsClockHistory },
   { label: "Pay", to: "/pay", icon: BsCreditCard },

@@ -54,3 +54,23 @@ exports.deleteClient = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// DELETE /api/clients
+exports.deleteAllClients = async (req, res) => {
+  try {
+    console.log("Deleting all clients...");
+    const result = await Client.deleteMany({});
+    res.status(200).json({
+      success: true,
+      message: `All clients deleted successfully`,
+      deletedCount: result.deletedCount,
+    });
+  } catch (err) {
+    console.error("Error deleting all clients:", err);
+    res.status(500).json({
+      success: false,
+      message: "Server error while deleting all clients",
+      error: err.message,
+    });
+  }
+};

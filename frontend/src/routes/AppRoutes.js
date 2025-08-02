@@ -7,6 +7,7 @@ import { useUser } from "../context/UserContext";
 import AdminPanel from "../components/AdminPanel";
 import { Flex, Spinner } from "@chakra-ui/react";
 import MyProfile from "../pages/MyProfile";
+import Ticketing from "../pages/Ticketing.js";
 
 const ProtectedRoute = ({ children }) => {
   const { loggedInUser, isLoading } = useUser();
@@ -38,7 +39,9 @@ const AppRoutes = () => (
     >
       {/* ✅ These go inside <Outlet /> */}
       <Route index element={<Dashboard />} />
+      <Route path="Ticketing" element={<Ticketing />} />
       <Route path="clockin" element={<ClockInClockOut />} />
+
       <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>
