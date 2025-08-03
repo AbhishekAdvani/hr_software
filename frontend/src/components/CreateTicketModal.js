@@ -4,6 +4,7 @@ import {
     ModalBody, ModalFooter, Input, Select, Button, VStack, Textarea, Box, Heading
 } from "@chakra-ui/react";
 import axios from "axios";
+import SearchableDropdown from "./SearchableDropdown.js";
 
 const CreateTicketModal = ({ isOpen, onClose, employees, clients, toast }) => {
     const [newTicket, setNewTicket] = useState({
@@ -99,32 +100,36 @@ const CreateTicketModal = ({ isOpen, onClose, employees, clients, toast }) => {
                         <Box bg="gray.50" p={5} borderRadius="xl" shadow="sm">
                             <Heading size="sm" mb={4} color="gray.700">Assignment</Heading>
                             <VStack spacing={3}>
-                                <Select
+                                <SearchableDropdown
                                     placeholder="Client"
-                                    value={newTicket.client}
-                                    onChange={(e) => setNewTicket({ ...newTicket, client: e.target.value })}
-                                    borderRadius="full"
-                                >
-                                    {clients.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
-                                </Select>
+                                    options={clients.map(c => ({
+                                        label: c.name,
+                                        value: c._id
+                                    }))}
+                                    onSelect={(value) => setNewTicket({ ...newTicket, client: value })}
+                                />
 
-                                <Select
+                                <SearchableDropdown
                                     placeholder="Requested By"
-                                    value={newTicket.requestedBy}
-                                    onChange={(e) => setNewTicket({ ...newTicket, requestedBy: e.target.value })}
-                                    borderRadius="full"
-                                >
-                                    {employees.map(emp => <option key={emp._id} value={emp._id}>{emp.name}</option>)}
-                                </Select>
+                                    options={employees.map(emp => ({
+                                        label: emp.name,
+                                        value: emp._id
+                                    }))}
+                                    onSelect={(value) => setNewTicket({ ...newTicket, requestedBy: value })}
+                                />
 
-                                <Select
+
+
+
+                                <SearchableDropdown
                                     placeholder="Assigned To"
-                                    value={newTicket.assignedTo}
-                                    onChange={(e) => setNewTicket({ ...newTicket, assignedTo: e.target.value })}
-                                    borderRadius="full"
-                                >
-                                    {employees.map(emp => <option key={emp._id} value={emp._id}>{emp.name}</option>)}
-                                </Select>
+                                    options={employees.map(emp => ({
+                                        label: emp.name,
+                                        value: emp._id
+                                    }))}
+                                    onSelect={(value) => setNewTicket({ ...newTicket, assignedTo: value })}
+                                />
+
 
                                 <Input
                                     type="datetime-local"

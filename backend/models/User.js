@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  employeeId: { type: String, unique: true },
   phone: {
     type: String,
     required: false,
@@ -26,7 +27,19 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["SuperAdmin", "HR", "Manager", "Employee", "Finance"],
+    enum: [
+      "SuperAdmin",         // Full access to everything
+      "Admin",              // Global admin but not super admin
+      "HRHead",             // Can create/manage employees, leave policy, etc.
+      "HRExecutive",        // Can view and manage leave requests, onboarding tasks
+      "Manager",            // Team manager — views team leaves, approves tickets
+      "TeamLead",           // Light manager — views assigned employee tickets
+      "Employee",           // Default role — limited access
+      "Finance",            // Access to payroll, reimbursements
+      "ITAdmin",            // Full access to all tickets (assigned/unassigned)
+      "ITSupport",          // Can view/update only assigned tickets
+      "Auditor",            // Read-only view of HR/ticket data
+    ],
     default: "Employee",
   },
   companyId: {
@@ -56,5 +69,4 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+module.exports = mongoose.model("User", userSchema, "employees"); // ✅ Explicit collection name

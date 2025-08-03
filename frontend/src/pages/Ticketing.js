@@ -18,6 +18,7 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import { FiCheckCircle } from "react-icons/fi";
 import CreateTicketModal from "../components/CreateTicketModal.js";
+import TicketFilters from "../components/TicketFilters.jsx";
 
 
 export default function Ticketing() {
@@ -27,10 +28,13 @@ export default function Ticketing() {
     const [statusFilter, setStatusFilter] = useState("");
     const [priorityFilter, setPriorityFilter] = useState("");
     const [assignedToFilter, setAssignedToFilter] = useState("");
+    const [requestedByFilter, setRequestedByFilter] = useState("");
+    const [clientFilter, setClientFilter] = useState("");
+
     const [assignedByFilter, setAssignedByFilter] = useState("");
     const [selectedTicket, setSelectedTicket] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [itemsPerPage, setItemsPerPage] = useState(7);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const toast = useToast();
     const createModal = useDisclosure();
@@ -215,21 +219,25 @@ export default function Ticketing() {
 
 
                 <Flex gap={4} flexWrap="wrap" mb={4} align="center">
-                    <Input placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} flex={1} />
-                    <Select placeholder="Status" w="200px" onChange={(e) => setStatusFilter(e.target.value)}><option>Open</option><option>In Progress</option><option>Closed</option></Select>
-                    <Select placeholder="Priority" w="200px" onChange={(e) => setPriorityFilter(e.target.value)}><option>Low</option><option>Medium</option><option>High</option><option>Urgent</option></Select>
-                    <Select placeholder="Assigned To" w="200px" onChange={(e) => setAssignedToFilter(e.target.value)}>
-                        {[...new Set(allTickets.map(t => t.assignedTo?.name || ""))].filter(Boolean).map((v, i) => <option key={i}>{v}</option>)}
-                    </Select>
-                    <Select placeholder="Requested By" w="200px" onChange={(e) => setAssignedByFilter(e.target.value)}>
-                        {[...new Set(allTickets.map(t => t.requestedBy?.name || ""))].filter(Boolean).map((v, i) => <option key={i}>{v}</option>)}
-                    </Select>
-                    <Select w="100px" value={itemsPerPage} onChange={(e) => setItemsPerPage(Number(e.target.value))}>
-                        <option value={2}>2</option>
-                        <option value={5}>5</option>
-                        <option value={10}>10</option>
-                    </Select>
-                    <Button leftIcon={<FiPlus />} colorScheme="blue" onClick={createModal.onOpen}>New Ticket</Button>
+                    <TicketFilters
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        statusFilter={statusFilter}
+                        setStatusFilter={setStatusFilter}
+                        priorityFilter={priorityFilter}
+                        setPriorityFilter={setPriorityFilter}
+                        assignedToFilter={assignedToFilter}
+                        setAssignedToFilter={setAssignedToFilter}
+                        requestedByFilter={requestedByFilter}
+                        setRequestedByFilter={setRequestedByFilter}
+                        clientFilter={clientFilter}
+                        setClientFilter={setClientFilter}
+                        itemsPerPage={itemsPerPage}
+                        setItemsPerPage={setItemsPerPage}
+                        onNewTicket={createModal.onOpen}
+                        allTickets={allTickets}
+                        allClients={allClients}
+                    />
                 </Flex>
 
                 <Tabs variant="enclosed" colorScheme="blue" onChange={() => setCurrentPage(1)}>
