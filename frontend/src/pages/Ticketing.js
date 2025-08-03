@@ -240,6 +240,7 @@ export default function Ticketing() {
                     />
                 </Flex>
 
+
                 <Tabs variant="enclosed" colorScheme="blue" onChange={() => setCurrentPage(1)}>
                     <TabList>
                         <Tab>All</Tab>
@@ -247,36 +248,109 @@ export default function Ticketing() {
                         <Tab>In Progress</Tab>
                         <Tab>Closed</Tab>
                     </TabList>
+
                     <TabPanels>
                         {["", "Open", "In Progress", "Closed"].map((status, idx) => (
                             <TabPanel key={idx} px={0}>
-                                <Table variant="simple" bg="white" rounded="md" shadow="sm">
+                                <Table variant="simple" bg="white" rounded="md" shadow="sm" size="sm">
                                     <Thead bg="gray.100">
                                         <Tr>
-                                            <Th>Ticket Code</Th><Th>Title</Th><Th>Status</Th><Th>Priority</Th>
-                                            <Th>SLA Due</Th><Th>Assigned To</Th><Th>Requested By</Th><Th>Actions</Th>
+                                            <Th>Ticket Code</Th>
+                                            <Th>Title</Th>
+                                            <Th>Status</Th>
+                                            <Th>Priority</Th>
+                                            <Th>Category</Th>
+                                            <Th>Client</Th>
+                                            <Th>Creation Date</Th>
+                                            <Th>SLA Due</Th>
+
+                                            <Th>Requested By</Th>
+                                            <Th>Assigned To</Th>
+                                            <Th>Attachment</Th>
+                                            <Th>Actions</Th>
                                         </Tr>
                                     </Thead>
                                     <Tbody>
                                         {getPaginatedTickets(status).map((ticket, i) => (
-                                            <Tr key={i}>
+                                            <Tr key={ticket._id}>
                                                 <Td>{ticket.ticketCode}</Td>
                                                 <Td>{ticket.title}</Td>
-                                                <Td><Badge colorScheme={ticket.status === "Open" ? "blue" : ticket.status === "In Progress" ? "yellow" : "gray"}>{ticket.status}</Badge></Td>
-                                                <Td><Badge colorScheme={ticket.priority === "High" ? "red" : ticket.priority === "Medium" ? "orange" : ticket.priority === "Low" ? "gray" : "purple"}>{ticket.priority}</Badge></Td>
-                                                <Td>{ticket.slaDueDate ? new Date(ticket.slaDueDate).toLocaleDateString() : "-"}</Td>
-                                                <Td>{ticket.assignedTo?.name || "-"}</Td>
-                                                <Td>{ticket.requestedBy?.name || "-"}</Td>
                                                 <Td>
-                                                    <IconButton icon={<EditIcon />} size="sm" onClick={() => handleEdit(ticket)} aria-label="Edit" />
+                                                    <Badge
+                                                        colorScheme={
+                                                            ticket.status === "Open"
+                                                                ? "blue"
+                                                                : ticket.status === "In Progress"
+                                                                    ? "yellow"
+                                                                    : "gray"
+                                                        }
+                                                    >
+                                                        {ticket.status}
+                                                    </Badge>
+                                                </Td>
+                                                <Td>
+                                                    <Badge
+                                                        colorScheme={
+                                                            ticket.priority === "High"
+                                                                ? "red"
+                                                                : ticket.priority === "Medium"
+                                                                    ? "orange"
+                                                                    : ticket.priority === "Low"
+                                                                        ? "gray"
+                                                                        : "purple"
+                                                        }
+                                                    >
+                                                        {ticket.priority}
+                                                    </Badge>
+                                                </Td>
+                                                <Td>{ticket.category || "-"}</Td>
+                                                <Td>{ticket.client?.name || "-"}</Td>
+                                                <Td>
+                                                    {ticket.slaDueDate
+                                                        ? new Date(ticket.slaDueDate).toLocaleDateString()
+                                                        : "-"}
+                                                </Td>
+                                                <Td>
+                                                    {ticket.createdAt
+                                                        ? new Date(ticket.slaDueDate).toLocaleDateString()
+                                                        : "-"}
+                                                </Td>
+                                                <Td>{ticket.requestedBy?.name || "-"}</Td>
+                                                <Td>{ticket.assignedTo?.name || "-"}</Td>
+                                                <Td>
+                                                    {ticket.attachments && ticket.attachments.length > 0 ? (
+                                                        <a
+                                                            href={ticket.attachments[0]}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            📎 View
+                                                        </a>
+                                                    ) : (
+                                                        "-"
+                                                    )}
+                                                </Td>
+                                                <Td>
+                                                    <IconButton
+                                                        icon={<EditIcon />}
+                                                        size="sm"
+                                                        onClick={() => handleEdit(ticket)}
+                                                        aria-label="Edit"
+                                                    />
                                                 </Td>
                                             </Tr>
                                         ))}
                                     </Tbody>
                                 </Table>
+
                                 <Flex justify="center" mt={4} gap={2}>
                                     {Array.from({ length: getPageCount(status) }).map((_, i) => (
-                                        <Button key={i} size="sm" colorScheme={i + 1 === currentPage ? "blue" : "gray"} onClick={() => setCurrentPage(i + 1)}>
+                                        <Button
+                                            key={i}
+                                            size="sm"
+                                            colorScheme={i + 1 === currentPage ? "blue" : "gray"}
+                                            onClick={() => setCurrentPage(i + 1)}
+                                        >
                                             {i + 1}
                                         </Button>
                                     ))}
@@ -285,6 +359,82 @@ export default function Ticketing() {
                         ))}
                     </TabPanels>
                 </Tabs>
+                <Flex
+                    mt={12}
+                    direction="column"
+                    align="center"
+                    justify="center"
+                    p={{ base: 6, md: 12 }}
+                    rounded="xl"
+                    borderColor="gray.200"
+                    textAlign="center"
+                    w="100%"
+                    maxW="container.md"
+                    mx="auto"
+                >
+                    <Image
+                        src="/flow.png" // Ensure this image is placed in `public/flow.png`
+                        alt="No tickets illustration"
+                        boxSize={{ base: "160px", md: "full" }}
+                        mb={6}
+                    />
+                    <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="gray.800" mb={2}>
+                        No tickets yet
+                    </Text>
+                    <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" mb={6}>
+                        Need help? Create your first ticket and start managing support efficiently.
+                    </Text>
+                    <Button
+                        leftIcon={<FiPlus />}
+                        colorScheme="blue"
+                        size="lg"
+                        onClick={createModal.onOpen}
+                        px={8}
+                    >
+                        Create Ticket
+                    </Button>
+                </Flex>
+
+                {filteredTickets.length === 0 && (
+                    <Flex
+                        mt={12}
+                        direction="column"
+                        align="center"
+                        justify="center"
+                        p={{ base: 6, md: 12 }}
+                        bg="gray.50"
+                        rounded="xl"
+                        border="2px dashed"
+                        borderColor="gray.200"
+                        textAlign="center"
+                        w="100%"
+                        maxW="container.md"
+                        mx="auto"
+                    >
+                        <Image
+                            src="/flow.png" // Ensure this image is placed in `public/flow.png`
+                            alt="No tickets illustration"
+                            boxSize={{ base: "160px", md: "full" }}
+                            mb={6}
+                        />
+                        <Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="bold" color="gray.800" mb={2}>
+                            No tickets yet
+                        </Text>
+                        <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" mb={6}>
+                            Need help? Create your first ticket and start managing support efficiently.
+                        </Text>
+                        <Button
+                            leftIcon={<FiPlus />}
+                            colorScheme="blue"
+                            size="lg"
+                            onClick={createModal.onOpen}
+                            px={8}
+                        >
+                            Create Ticket
+                        </Button>
+                    </Flex>
+                )}
+
 
                 <Modal isOpen={isOpen} onClose={onClose} isCentered>
                     <ModalOverlay />
