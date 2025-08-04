@@ -71,6 +71,23 @@ export default function Ticketing() {
   const createModal = useDisclosure();
   const [allEmployees, setAllEmployees] = useState([]);
   const [allClients, setAllClients] = useState([]);
+  const [editForm, setEditForm] = useState({
+    title: "",
+    status: "",
+    priority: "",
+    assignedTo: "",
+  });
+
+  useEffect(() => {
+    if (selectedTicket) {
+      setEditForm({
+        title: selectedTicket.title || "",
+        status: selectedTicket.status || "",
+        priority: selectedTicket.priority || "",
+        assignedTo: selectedTicket.assignedTo?._id || "",
+      });
+    }
+  }, [selectedTicket]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -172,14 +189,28 @@ export default function Ticketing() {
     onOpen();
   };
 
-  const handleSave = () => {
-    toast({
-      title: "Ticket updated.",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-    });
-    onClose();
+  const handleSave = async () => {
+    try {
+      const res = await axios.patch(
+        `http://localhost:5000/api/tickets/updateTicket/${selectedTicket._id}`,
+        editForm
+      );
+
+      if (res.data.success) {
+        toast({ title: "Ticket updated successfully", status: "success" });
+        onClose();
+        setSelectedTicket(null);
+
+        // Refresh tickets
+        const refreshed = await axios.get(
+          "http://localhost:5000/api/tickets/getAllTickets"
+        );
+        if (refreshed.data.success) setAllTickets(refreshed.data.data);
+      }
+    } catch (error) {
+      console.error("Update failed", error);
+      toast({ title: "Failed to update ticket", status: "error" });
+    }
   };
 
   const getPaginatedTickets = (status) => {
@@ -538,34 +569,70 @@ export default function Ticketing() {
             <ModalCloseButton />
             <ModalBody>
               {selectedTicket && (
-                <VStack align="start" spacing={3}>
+                <VStack align="start" spacing={4} w="100%">
                   <Text>
                     <b>Ticket Code:</b> {selectedTicket.ticketCode}
                   </Text>
-                  <Text>
-                    <b>Title:</b> {selectedTicket.title}
-                  </Text>
-                  <Text>
-                    <b>Status:</b> {selectedTicket.status}
-                  </Text>
-                  <Text>
-                    <b>Priority:</b> {selectedTicket.priority}
-                  </Text>
-                  <Text>
-                    <b>Assigned To:</b> {selectedTicket.assignedTo?.name}
-                  </Text>
-                  <Text>
-                    <b>Requested By:</b> {selectedTicket.requestedBy?.name}
-                  </Text>
-                  <Text>
-                    <b>SLA Due:</b>{" "}
-                    {selectedTicket.slaDueDate
-                      ? new Date(selectedTicket.slaDueDate).toLocaleString()
-                      : "-"}
-                  </Text>
+
+                  <Input
+                    placeholder="Title"
+                    value={editForm.title}
+                    onChange={(e) =>
+                      setEditForm((prev) => ({
+                        ...prev,
+                        title: e.target.value,
+                      }))
+                    }
+                  />
+
+                  <Select
+                    value={editForm.status}
+                    onChange={(e) =>
+                      setEditForm((prev) => ({
+                        ...prev,
+                        status: e.target.value,
+                      }))
+                    }
+                  >
+                    <option value="Open">Open</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Closed">Closed</option>
+                  </Select>
+
+                  <Select
+                    value={editForm.priority}
+                    onChange={(e) =>
+                      setEditForm((prev) => ({
+                        ...prev,
+                        priority: e.target.value,
+                      }))
+                    }
+                  >
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </Select>
+
+                  <Select
+                    placeholder="Assign to"
+                    value={editForm.assignedTo}
+                    onChange={(e) =>
+                      setEditForm((prev) => ({
+                        ...prev,
+                        assignedTo: e.target.value,
+                      }))
+                    }
+                  >
+                    {allEmployees.map((emp) => (
+                      <option key={emp._id} value={emp._id}>
+                        {emp.name}
+                      </option>
+                    ))}
+                  </Select>
                 </VStack>
               )}
             </ModalBody>
+
             <ModalFooter>
               <Button onClick={handleSave} colorScheme="blue">
                 Save
