@@ -254,7 +254,7 @@ const UserDashboard = () => {
         {/* Shortcuts */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -290,7 +290,7 @@ const UserDashboard = () => {
         {/* Today's Events Timeline */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -318,7 +318,7 @@ const UserDashboard = () => {
         {/* HR Announcements */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -351,7 +351,7 @@ const UserDashboard = () => {
         {/* Employee Directory */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -371,7 +371,7 @@ const UserDashboard = () => {
         {/* Leave Summary Chart (Placeholder) */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -397,7 +397,7 @@ const UserDashboard = () => {
         {/* Task Timeline */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -416,7 +416,7 @@ const UserDashboard = () => {
         {/* Payroll Summary */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -434,7 +434,7 @@ const UserDashboard = () => {
         {/* Team Birthdays */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -453,7 +453,7 @@ const UserDashboard = () => {
         {/* Policy Updates */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"
@@ -471,7 +471,7 @@ const UserDashboard = () => {
         {/* Quick Contacts */}
         <Box
           bg="white"
-          p={6}
+          p={3}
           rounded="2xl"
           shadow="base"
           border="1px solid"

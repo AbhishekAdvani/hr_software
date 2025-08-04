@@ -12,7 +12,7 @@ const AdminPanel = () => {
       <Flex>
         <Sidebar />
 
-        <Box ml="200px" p={6} w="full">
+        <Box ml="150px" w="calc(100% - 150px)" p={3} zIndex={998}>
           <Outlet />
         </Box>
       </Flex>

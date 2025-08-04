@@ -19,7 +19,6 @@ import {
   BsHeart,
   BsShieldCheck,
   BsStickies,
-
 } from "react-icons/bs";
 
 const navItems = [
@@ -38,7 +37,7 @@ const Sidebar = () => {
 
   return (
     <Box
-      w="220px"
+      w="min-content"
       h="100vh"
       bg={bg}
       borderRight="1px solid"
@@ -47,6 +46,8 @@ const Sidebar = () => {
       px={4}
       position="fixed"
       boxShadow="sm"
+      minW="min-content" // ✅ Prevents collapse
+      overflowX="hidden" // ✅ Contain any child overflows
     >
       <VStack spacing={2} align="stretch">
         {navItems.map((item) => {

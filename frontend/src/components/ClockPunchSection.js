@@ -103,7 +103,7 @@ export default function ClockPunchSection({
   return (
     <Box
       bg={bgCard}
-      p={6}
+      p={3}
       borderRadius="2xl"
       boxShadow="xl"
       border="1px solid"
