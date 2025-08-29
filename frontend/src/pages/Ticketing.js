@@ -12,10 +12,6 @@ import {
   Tr,
   Th,
   Td,
-  Avatar,
-  IconButton,
-  VStack,
-  HStack,
   Badge,
   Image,
   Tabs,
@@ -24,9 +20,11 @@ import {
   Tab,
   TabPanel,
   SimpleGrid,
-  Stat,
-  StatLabel,
-  StatNumber,
+  useDisclosure,
+  useToast,
+  Spinner,
+  IconButton,
+  VStack,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -34,21 +32,23 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  useDisclosure,
-  useToast,
-  Spinner,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { SearchIcon, EditIcon, DownloadIcon } from "@chakra-ui/icons";
-import { FiPlus } from "react-icons/fi";
+import { EditIcon, DownloadIcon } from "@chakra-ui/icons";
+import {
+  FiPlus,
+  FiBarChart2,
+  FiRefreshCw,
+  FiX,
+  FiCheckCircle,
+} from "react-icons/fi";
 import { saveAs } from "file-saver";
 import axios from "axios";
-import { FiBarChart2, FiRefreshCw, FiX } from "react-icons/fi";
 import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { FiCheckCircle } from "react-icons/fi";
 import CreateTicketModal from "../components/CreateTicketModal.js";
 import TicketFilters from "../components/TicketFilters.jsx";
 
@@ -61,7 +61,6 @@ export default function Ticketing() {
   const [assignedToFilter, setAssignedToFilter] = useState("");
   const [requestedByFilter, setRequestedByFilter] = useState("");
   const [clientFilter, setClientFilter] = useState("");
-
   const [assignedByFilter, setAssignedByFilter] = useState("");
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,6 +76,16 @@ export default function Ticketing() {
     priority: "",
     assignedTo: "",
   });
+
+  // Colors for dark/light
+  const cardBg = useColorModeValue("white", "gray.800");
+  const cardBorder = useColorModeValue("gray.200", "gray.700");
+  const tableHeaderBg = useColorModeValue("gray.100", "gray.700");
+  const tableText = useColorModeValue("gray.800", "gray.200");
+  const subText = useColorModeValue("gray.600", "gray.400");
+  const noTicketBg = useColorModeValue("gray.50", "gray.700");
+  const kpiText = useColorModeValue("gray.600", "gray.300");
+  const kpiValue = useColorModeValue("gray.800", "white");
 
   useEffect(() => {
     if (selectedTicket) {
@@ -110,24 +119,6 @@ export default function Ticketing() {
     };
 
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchTickets = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:5000/api/tickets/getAllTickets"
-        );
-        if (res.data.success) {
-          setAllTickets(res.data.data);
-        }
-      } catch (error) {
-        toast({ title: "Error fetching tickets", status: "error" });
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTickets();
   }, []);
 
   const exportToCSV = (tickets) => {
@@ -201,7 +192,6 @@ export default function Ticketing() {
         onClose();
         setSelectedTicket(null);
 
-        // Refresh tickets
         const refreshed = await axios.get(
           "http://localhost:5000/api/tickets/getAllTickets"
         );
@@ -236,20 +226,20 @@ export default function Ticketing() {
   return (
     <>
       <Box w="100%" p={3}>
+        {/* Header */}
         <Flex justify="space-between" align="center" mb={4}>
-          <Text fontSize="2xl" fontWeight="bold">
+          <Text fontSize="2xl" fontWeight="bold" color={tableText}>
             Ticketing
           </Text>
-          <HStack>
-            <Button
-              leftIcon={<DownloadIcon />}
-              onClick={() => exportToCSV(filteredTickets)}
-            >
-              Export CSV
-            </Button>
-          </HStack>
+          <Button
+            leftIcon={<DownloadIcon />}
+            onClick={() => exportToCSV(filteredTickets)}
+          >
+            Export CSV
+          </Button>
         </Flex>
 
+        {/* KPIs */}
         <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={6} mb={6}>
           {[
             {
@@ -257,33 +247,35 @@ export default function Ticketing() {
               value: summary.total,
               percent: 100,
               icon: FiBarChart2,
-              color: "#4C51BF", // blue.600
+              color: "#4C51BF",
             },
             {
               label: "Open Tickets",
               value: summary.open,
               percent: Math.round((summary.open / summary.total) * 100),
               icon: FiCheckCircle,
-              color: "#38A169", // green.400
+              color: "#38A169",
             },
             {
               label: "In Progress",
               value: summary.inProgress,
               percent: Math.round((summary.inProgress / summary.total) * 100),
               icon: FiRefreshCw,
-              color: "#DD6B20", // orange.400
+              color: "#DD6B20",
             },
             {
               label: "Closed Tickets",
               value: summary.closed,
               percent: Math.round((summary.closed / summary.total) * 100),
               icon: FiX,
-              color: "#718096", // gray.500
+              color: "#718096",
             },
           ].map((kpi, index) => (
             <Box
               key={index}
-              bg="white"
+              bg={cardBg}
+              border="1px solid"
+              borderColor={cardBorder}
               p={5}
               borderRadius="xl"
               boxShadow="lg"
@@ -296,28 +288,29 @@ export default function Ticketing() {
                   value={kpi.percent}
                   styles={buildStyles({
                     pathColor: kpi.color,
-                    trailColor: "#EDF2F7",
+                    trailColor: useColorModeValue("#EDF2F7", "#2D3748"),
                     strokeLinecap: "round",
                   })}
                 >
-                  <Text fontSize="lg" fontWeight="bold">
+                  <Text fontSize="lg" fontWeight="bold" color={kpiText}>
                     {kpi.percent}%
                   </Text>
                 </CircularProgressbarWithChildren>
               </Box>
               <Flex align="center" justify="center" gap={2}>
                 <kpi.icon color={kpi.color} />
-                <Text fontSize="md" fontWeight="medium" color="gray.600">
+                <Text fontSize="md" fontWeight="medium" color={kpiText}>
                   {kpi.label}
                 </Text>
               </Flex>
-              <Text fontSize="xl" fontWeight="bold" color="gray.800" mt={1}>
+              <Text fontSize="xl" fontWeight="bold" color={kpiValue} mt={1}>
                 {kpi.value}
               </Text>
             </Box>
           ))}
         </SimpleGrid>
 
+        {/* Filters */}
         <Flex gap={4} flexWrap="wrap" mb={4} align="center">
           <TicketFilters
             searchTerm={searchTerm}
@@ -340,6 +333,7 @@ export default function Ticketing() {
           />
         </Flex>
 
+        {/* Tabs + Tables */}
         <Tabs
           variant="enclosed"
           colorScheme="blue"
@@ -355,17 +349,16 @@ export default function Ticketing() {
           <TabPanels>
             {["", "Open", "In Progress", "Closed"].map((status, idx) => (
               <TabPanel key={idx} px={0}>
-                {/* 👇 Horizontal scroll wrapper */}
                 <Box overflowX="auto">
                   <Table
                     variant="simple"
-                    bg="white"
+                    bg={cardBg}
                     rounded="md"
                     shadow="sm"
                     size="sm"
                     width="100%"
                   >
-                    <Thead bg="gray.100">
+                    <Thead bg={tableHeaderBg}>
                       <Tr>
                         <Th>Ticket Code</Th>
                         <Th>Title</Th>
@@ -384,8 +377,8 @@ export default function Ticketing() {
                     <Tbody>
                       {getPaginatedTickets(status).map((ticket) => (
                         <Tr key={ticket._id}>
-                          <Td>{ticket.ticketCode}</Td>
-                          <Td>{ticket.title}</Td>
+                          <Td color={tableText}>{ticket.ticketCode}</Td>
+                          <Td color={tableText}>{ticket.title}</Td>
                           <Td>
                             <Badge
                               colorScheme={
@@ -414,23 +407,26 @@ export default function Ticketing() {
                               {ticket.priority}
                             </Badge>
                           </Td>
-                          <Td>{ticket.category || "-"}</Td>
-                          <Td>{ticket.client?.name || "-"}</Td>
-                          <Td>
+                          <Td color={subText}>{ticket.category || "-"}</Td>
+                          <Td color={subText}>{ticket.client?.name || "-"}</Td>
+                          <Td color={subText}>
                             {ticket.createdAt
                               ? new Date(ticket.createdAt).toLocaleDateString()
                               : "-"}
                           </Td>
-                          <Td>
+                          <Td color={subText}>
                             {ticket.slaDueDate
                               ? new Date(ticket.slaDueDate).toLocaleDateString()
                               : "-"}
                           </Td>
-                          <Td>{ticket.requestedBy?.name || "-"}</Td>
-                          <Td>{ticket.assignedTo?.name || "-"}</Td>
+                          <Td color={subText}>
+                            {ticket.requestedBy?.name || "-"}
+                          </Td>
+                          <Td color={subText}>
+                            {ticket.assignedTo?.name || "-"}
+                          </Td>
                           <Td>
-                            {ticket.attachments &&
-                            ticket.attachments.length > 0 ? (
+                            {ticket.attachments?.length > 0 ? (
                               <a
                                 href={ticket.attachments[0]}
                                 target="_blank"
@@ -474,48 +470,7 @@ export default function Ticketing() {
           </TabPanels>
         </Tabs>
 
-        <Flex
-          mt={12}
-          direction="column"
-          align="center"
-          justify="center"
-          p={{ base: 6, md: 12 }}
-          rounded="xl"
-          borderColor="gray.200"
-          textAlign="center"
-          w="100%"
-          maxW="container.md"
-          mx="auto"
-        >
-          <Image
-            src="/flow.png" // Ensure this image is placed in `public/flow.png`
-            alt="No tickets illustration"
-            boxSize={{ base: "160px", md: "full" }}
-            mb={6}
-          />
-          <Text
-            fontSize={{ base: "xl", md: "2xl" }}
-            fontWeight="bold"
-            color="gray.800"
-            mb={2}
-          >
-            No tickets yet
-          </Text>
-          <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" mb={6}>
-            Need help? Create your first ticket and start managing support
-            efficiently.
-          </Text>
-          <Button
-            leftIcon={<FiPlus />}
-            colorScheme="blue"
-            size="lg"
-            onClick={createModal.onOpen}
-            px={8}
-          >
-            Create Ticket
-          </Button>
-        </Flex>
-
+        {/* Empty State */}
         {filteredTickets.length === 0 && (
           <Flex
             mt={12}
@@ -523,30 +478,30 @@ export default function Ticketing() {
             align="center"
             justify="center"
             p={{ base: 6, md: 12 }}
-            bg="gray.50"
+            bg={noTicketBg}
             rounded="xl"
             border="2px dashed"
-            borderColor="gray.200"
+            borderColor={cardBorder}
             textAlign="center"
             w="100%"
             maxW="container.md"
             mx="auto"
           >
             <Image
-              src="/flow.png" // Ensure this image is placed in `public/flow.png`
-              alt="No tickets illustration"
-              boxSize={{ base: "160px", md: "full" }}
+              src="/flow.png"
+              alt="No tickets"
+              boxSize={{ base: "160px", md: "200px" }}
               mb={6}
             />
             <Text
               fontSize={{ base: "xl", md: "2xl" }}
               fontWeight="bold"
-              color="gray.800"
+              color={tableText}
               mb={2}
             >
               No tickets yet
             </Text>
-            <Text fontSize={{ base: "md", md: "lg" }} color="gray.600" mb={6}>
+            <Text fontSize={{ base: "md", md: "lg" }} color={subText} mb={6}>
               Need help? Create your first ticket and start managing support
               efficiently.
             </Text>
@@ -562,18 +517,18 @@ export default function Ticketing() {
           </Flex>
         )}
 
+        {/* Edit Modal */}
         <Modal isOpen={isOpen} onClose={onClose} isCentered>
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>View/Edit Ticket</ModalHeader>
+          <ModalContent bg={cardBg}>
+            <ModalHeader color={tableText}>View/Edit Ticket</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               {selectedTicket && (
                 <VStack align="start" spacing={4} w="100%">
-                  <Text>
+                  <Text color={tableText}>
                     <b>Ticket Code:</b> {selectedTicket.ticketCode}
                   </Text>
-
                   <Input
                     placeholder="Title"
                     value={editForm.title}
@@ -584,7 +539,6 @@ export default function Ticketing() {
                       }))
                     }
                   />
-
                   <Select
                     value={editForm.status}
                     onChange={(e) =>
@@ -598,7 +552,6 @@ export default function Ticketing() {
                     <option value="In Progress">In Progress</option>
                     <option value="Closed">Closed</option>
                   </Select>
-
                   <Select
                     value={editForm.priority}
                     onChange={(e) =>
@@ -612,7 +565,6 @@ export default function Ticketing() {
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                   </Select>
-
                   <Select
                     placeholder="Assign to"
                     value={editForm.assignedTo}
@@ -632,7 +584,6 @@ export default function Ticketing() {
                 </VStack>
               )}
             </ModalBody>
-
             <ModalFooter>
               <Button onClick={handleSave} colorScheme="blue">
                 Save
@@ -641,6 +592,8 @@ export default function Ticketing() {
           </ModalContent>
         </Modal>
       </Box>
+
+      {/* Create Ticket Modal */}
       <CreateTicketModal
         isOpen={createModal.isOpen}
         onClose={createModal.onClose}

@@ -13,12 +13,9 @@ import {
   BsCalendarCheck,
   BsClockHistory,
   BsCreditCard,
-  BsCurrencyDollar,
-  BsFillTicketFill,
-  BsGear,
-  BsHeart,
   BsShieldCheck,
   BsStickies,
+  BsGear,
 } from "react-icons/bs";
 
 const navItems = [
@@ -32,8 +29,15 @@ const navItems = [
 
 const Sidebar = () => {
   const location = useLocation();
-  const bg = useColorModeValue("gray.50", "gray.800");
+
+  // Light/Dark adaptive values
+  const bg = useColorModeValue("gray.50", "gray.900");
+  const borderClr = useColorModeValue("gray.200", "gray.700");
   const activeBg = useColorModeValue("teal.100", "teal.600");
+  const activeColor = useColorModeValue("teal.700", "white");
+  const textColor = useColorModeValue("gray.700", "gray.300");
+  const hoverBg = useColorModeValue("gray.200", "gray.700");
+  const footerColor = useColorModeValue("gray.500", "gray.500");
 
   return (
     <Box
@@ -41,13 +45,13 @@ const Sidebar = () => {
       h="100vh"
       bg={bg}
       borderRight="1px solid"
-      borderColor="gray.200"
+      borderColor={borderClr}
       py={6}
       px={4}
       position="fixed"
       boxShadow="sm"
-      minW="min-content" // ✅ Prevents collapse
-      overflowX="hidden" // ✅ Contain any child overflows
+      minW="min-content"
+      overflowX="hidden"
     >
       <VStack spacing={2} align="stretch">
         {navItems.map((item) => {
@@ -62,9 +66,9 @@ const Sidebar = () => {
               variant="ghost"
               fontWeight="medium"
               bg={isActive ? activeBg : "transparent"}
-              color={isActive ? "teal.700" : "gray.700"}
+              color={isActive ? activeColor : textColor}
               _hover={{
-                bg: useColorModeValue("gray.200", "gray.700"),
+                bg: hoverBg,
               }}
               size="sm"
               borderRadius="md"
@@ -75,9 +79,9 @@ const Sidebar = () => {
         })}
       </VStack>
 
-      <Divider my={6} />
+      <Divider my={6} borderColor={borderClr} />
 
-      <Text fontSize="xs" color="gray.500">
+      <Text fontSize="xs" color={footerColor}>
         © {new Date().getFullYear()} Technivo People
       </Text>
     </Box>

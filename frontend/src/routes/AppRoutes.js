@@ -21,7 +21,9 @@ const ProtectedRoute = ({ children }) => {
     );
   }
   console.log("loggedInUser", loggedInUser);
-  return loggedInUser ? children : <Navigate to="/login" />;
+
+  // return loggedInUser ? children : <Navigate to="/login" />;
+  return loggedInUser ? children : null;
 };
 
 const AppRoutes = () => (

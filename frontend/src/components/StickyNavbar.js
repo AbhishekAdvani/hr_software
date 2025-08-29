@@ -15,12 +15,17 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  Spacer,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, BellIcon } from "@chakra-ui/icons";
-import { useLocation } from "react-router-dom";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  BellIcon,
+  MoonIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useColorMode } from "@chakra-ui/react";
 
 const MotionLink = motion(Link);
 
@@ -32,6 +37,7 @@ const Links = [
 ];
 
 const NavLink = ({ label, href, disabled, onNavigate }) => {
+  const location = useLocation(); // FIX: get location inside hook
   const isActive = location.pathname === href;
 
   return (
@@ -77,18 +83,17 @@ const StickyNavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const navigate = useNavigate();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
-    onClose(); // Auto-close mobile nav
+    onClose(); // Auto-close mobile nav when route changes
   }, [location.pathname]);
 
   const handleLogout = () => {
-    // Add auth cleanup here if needed
     navigate("/login");
   };
 
   const handleMyProfile = () => {
-    // Add auth cleanup here if needed
     navigate("/MyProfile");
   };
 
@@ -125,7 +130,15 @@ const StickyNavbar = () => {
           ))}
         </HStack>
 
-        <Flex align="center" gap={4}>
+        <Flex align="center" gap={3}>
+          {/* Dark/Light Toggle */}
+          <IconButton
+            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            onClick={toggleColorMode}
+            variant="ghost"
+            aria-label="Toggle theme"
+          />
+
           {/* Notification Bell */}
           <IconButton
             icon={<BellIcon />}

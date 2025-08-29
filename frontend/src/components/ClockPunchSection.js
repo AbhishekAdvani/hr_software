@@ -25,6 +25,9 @@ export default function ClockPunchSection({
   const bgCard = useColorModeValue("white", "gray.800");
   const borderColor = useColorModeValue("gray.200", "gray.700");
   const highlight = useColorModeValue("teal.500", "teal.300");
+  const subText = useColorModeValue("gray.600", "gray.400");
+  const punchOutHoverBg = useColorModeValue("red.50", "red.900");
+  const punchOutBorder = useColorModeValue("red.400", "red.300");
 
   const handlePunch = (type) => {
     const now = new Date();
@@ -123,7 +126,7 @@ export default function ClockPunchSection({
               Live
             </Badge>
           </HStack>
-          <Text fontSize="sm" color="gray.500">
+          <Text fontSize="sm" color={subText}>
             Keep track of your check-in & check-out times — just tap a button!
             🚀
           </Text>
@@ -154,8 +157,8 @@ export default function ClockPunchSection({
               rounded="full"
               px={6}
               border="2px"
-              borderColor="red.400"
-              _hover={{ bg: "red.50" }}
+              borderColor={punchOutBorder}
+              _hover={{ bg: punchOutHoverBg }}
             >
               Punch Out
             </Button>
@@ -168,7 +171,6 @@ export default function ClockPunchSection({
 
 // Usage in App.js
 // import ClockPunchSection from "./components/ClockPunchSection";
-
 // <ClockPunchSection
 //   onPunch={(type) => console.log("User punched:", type)}
 //   entries={entries}

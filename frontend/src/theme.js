@@ -4,14 +4,14 @@ import { mode } from "@chakra-ui/theme-tools";
 
 const themeChakra = extendTheme({
   config: {
-    initialColorMode: "dark",
-    useSystemColorMode: true,
+    initialColorMode: "dark", // default
+    useSystemColorMode: false, // don’t let OS override
   },
   styles: {
     global: (props) => ({
       "html, body, #root": {
-        bg: mode("white", "gray.900")(props), // light → white, dark → gray.900
-        color: mode("gray.800", "whiteAlpha.900")(props), // text adjusts
+        bg: mode("white", "gray.900")(props),
+        color: mode("gray.800", "whiteAlpha.900")(props),
       },
     }),
   },

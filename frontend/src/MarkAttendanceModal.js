@@ -14,7 +14,7 @@ import {
   useToast,
   FormControl,
   FormLabel,
-  Box,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
@@ -36,6 +36,12 @@ const MarkAttendanceModal = ({
   setEntries,
 }) => {
   const toast = useToast();
+
+  const modalBg = useColorModeValue("white", "gray.800");
+  const headerColor = useColorModeValue("gray.800", "whiteAlpha.900");
+  const labelColor = useColorModeValue("gray.600", "gray.400");
+  const inputBg = useColorModeValue("white", "gray.700");
+  const selectBg = useColorModeValue("white", "gray.700");
 
   const markPresent = () => {
     if (!selectedId || !location || !client || !project) {
@@ -88,7 +94,7 @@ const MarkAttendanceModal = ({
           client,
           project,
           geoLocation: `${latitude},${longitude}`,
-          deviceId: deviceId, // ✅ captured device fingerprint
+          deviceId, // ✅ captured device fingerprint
         };
 
         setEntries([...entries, entry]);
@@ -121,13 +127,15 @@ const MarkAttendanceModal = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
       <ModalOverlay />
-      <ModalContent borderRadius="md" p={1}>
-        <ModalHeader fontWeight="semibold">Mark Attendance</ModalHeader>
+      <ModalContent borderRadius="md" p={1} bg={modalBg}>
+        <ModalHeader fontWeight="semibold" color={headerColor}>
+          Mark Attendance
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <VStack spacing={5}>
+          <VStack spacing={5} w="100%">
             <FormControl isRequired>
-              <FormLabel fontSize="sm" mb={1}>
+              <FormLabel fontSize="sm" mb={1} color={labelColor}>
                 Employee
               </FormLabel>
               <ReactSelect
@@ -136,6 +144,15 @@ const MarkAttendanceModal = ({
                     ...base,
                     minHeight: "36px",
                     fontSize: "0.9rem",
+                    backgroundColor: selectBg,
+                  }),
+                  menu: (base) => ({
+                    ...base,
+                    backgroundColor: selectBg,
+                  }),
+                  singleValue: (base) => ({
+                    ...base,
+                    color: headerColor,
                   }),
                 }}
                 options={employees.map((e) => ({
@@ -158,7 +175,7 @@ const MarkAttendanceModal = ({
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel fontSize="sm" mb={1}>
+              <FormLabel fontSize="sm" mb={1} color={labelColor}>
                 Location
               </FormLabel>
               <Select
@@ -166,6 +183,7 @@ const MarkAttendanceModal = ({
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 size="sm"
+                bg={selectBg}
               >
                 <option value="Office">🏢 Office</option>
                 <option value="Offsite">🌐 Offsite</option>
@@ -173,7 +191,7 @@ const MarkAttendanceModal = ({
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel fontSize="sm" mb={1}>
+              <FormLabel fontSize="sm" mb={1} color={labelColor}>
                 Client
               </FormLabel>
               <ReactSelect
@@ -182,6 +200,15 @@ const MarkAttendanceModal = ({
                     ...base,
                     minHeight: "36px",
                     fontSize: "0.9rem",
+                    backgroundColor: selectBg,
+                  }),
+                  menu: (base) => ({
+                    ...base,
+                    backgroundColor: selectBg,
+                  }),
+                  singleValue: (base) => ({
+                    ...base,
+                    color: headerColor,
                   }),
                 }}
                 options={clients.map((c) => ({
@@ -204,7 +231,7 @@ const MarkAttendanceModal = ({
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel fontSize="sm" mb={1}>
+              <FormLabel fontSize="sm" mb={1} color={labelColor}>
                 Project
               </FormLabel>
               <Input
@@ -212,6 +239,7 @@ const MarkAttendanceModal = ({
                 value={project || ""}
                 onChange={(e) => setProject(e.target.value)}
                 size="sm"
+                bg={inputBg}
               />
             </FormControl>
           </VStack>

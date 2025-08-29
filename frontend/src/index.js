@@ -8,8 +8,8 @@ import themeChakra from "./theme.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider theme={themeChakra}>
+    <ColorModeScript initialColorMode={themeChakra.config.initialColorMode} />
     <BrowserRouter>
-      <ColorModeScript initialColorMode={themeChakra.config.initialColorMode} />
       <App />
     </BrowserRouter>
   </ChakraProvider>
