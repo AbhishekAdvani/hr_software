@@ -8,6 +8,7 @@ import AdminPanel from "../components/AdminPanel";
 import { Flex, Spinner } from "@chakra-ui/react";
 import MyProfile from "../pages/MyProfile";
 import Ticketing from "../pages/Ticketing.js";
+import ComingSoon from "../pages/ComingSoon.jsx";
 
 const ProtectedRoute = ({ children }) => {
   const { loggedInUser, isLoading } = useUser();
@@ -41,6 +42,7 @@ const AppRoutes = () => (
       <Route index element={<Dashboard />} />
       <Route path="Ticketing" element={<Ticketing />} />
       <Route path="clockin" element={<ClockInClockOut />} />
+      <Route path="ComingSoon" element={<ComingSoon />} />
 
       <Route path="*" element={<NotFound />} />
     </Route>

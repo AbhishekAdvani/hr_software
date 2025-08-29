@@ -78,7 +78,7 @@ const Sidebar = () => {
       <Divider my={6} />
 
       <Text fontSize="xs" color="gray.500">
-        © {new Date().getFullYear()} Expound Technivo
+        © {new Date().getFullYear()} Technivo People
       </Text>
     </Box>
   );

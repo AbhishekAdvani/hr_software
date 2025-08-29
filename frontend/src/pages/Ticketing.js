@@ -238,7 +238,7 @@ export default function Ticketing() {
       <Box w="100%" p={3}>
         <Flex justify="space-between" align="center" mb={4}>
           <Text fontSize="2xl" fontWeight="bold">
-            Expound Ticket
+            Ticketing
           </Text>
           <HStack>
             <Button
