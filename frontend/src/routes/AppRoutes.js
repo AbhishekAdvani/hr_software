@@ -1,11 +1,9 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import Dashboard from "../pages/Dashboard";
 import ClockInClockOut from "../pages/ClockInClockOut";
 import NotFound from "../components/NotFound";
-import { useUser } from "../context/UserContext";
 import AdminPanel from "../components/AdminPanel";
-import { Flex, Spinner } from "@chakra-ui/react";
 import MyProfile from "../pages/MyProfile";
 import Ticketing from "../pages/Ticketing.js";
 import ComingSoon from "../pages/ComingSoon.jsx";
