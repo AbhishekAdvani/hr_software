@@ -10,21 +10,21 @@ import MyProfile from "../pages/MyProfile";
 import Ticketing from "../pages/Ticketing.js";
 import ComingSoon from "../pages/ComingSoon.jsx";
 
-const ProtectedRoute = ({ children }) => {
-  const { loggedInUser, isLoading } = useUser();
+// const ProtectedRoute = ({ children }) => {
+//   const { loggedInUser, isLoading } = useUser();
 
-  if (isLoading) {
-    return (
-      <Flex justify="center" align="center" height="100vh">
-        <Spinner size="xl" color="teal.500" />
-      </Flex>
-    );
-  }
-  console.log("loggedInUser", loggedInUser);
+//   if (isLoading) {
+//     return (
+//       <Flex justify="center" align="center" height="100vh">
+//         <Spinner size="xl" color="teal.500" />
+//       </Flex>
+//     );
+//   }
+//   console.log("loggedInUser", loggedInUser);
 
-  // return loggedInUser ? children : <Navigate to="/login" />;
-  return loggedInUser ? children : null;
-};
+//   // return loggedInUser ? children : <Navigate to="/login" />;
+//   return loggedInUser ? children : null;
+// };
 
 const AppRoutes = () => (
   <Routes>
@@ -35,9 +35,9 @@ const AppRoutes = () => (
     <Route
       path="/"
       element={
-        <ProtectedRoute>
-          <AdminPanel />
-        </ProtectedRoute>
+        // <ProtectedRoute>
+        <AdminPanel />
+        // </ProtectedRoute>
       }
     >
       {/* ✅ These go inside <Outlet /> */}
